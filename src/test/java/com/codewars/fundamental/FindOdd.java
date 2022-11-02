@@ -23,6 +23,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class FindOdd {
 
+    public static int findIt(int[] A) {
+        int xor = 0;
+        for (int j : A) {
+            xor ^= j;
+        }
+        return xor;
+    }
+
     @Test
     public void findTest() {
         Random rng = new Random();
@@ -53,13 +61,5 @@ public class FindOdd {
         assertEquals(10, FindOdd.findIt(new int[]{10}));
         assertEquals(10, FindOdd.findIt(new int[]{1,1,1,1,1,1,10,1,1,1,1}));
         assertEquals(1, FindOdd.findIt(new int[]{5,4,3,2,1,5,4,3,2,10,10}));
-    }
-
-    public static int findIt(int[] A) {
-        int xor = 0;
-        for (int j : A) {
-            xor ^= j;
-        }
-        return xor;
     }
 }
