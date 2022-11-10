@@ -22,28 +22,42 @@ public class TwoSum {
 
     public static int[] twoSum(int[] numbers, int target) {
         int first = -1, second = -1;
-        for (int i = 0; i< numbers.length; i++){
-            for (int j = i + 1; j< numbers.length; j++){
-                if (numbers[i] + numbers[j] == target) {
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                if (numbers[i] + numbers[j]==target) {
                     first = i;
                     second = j;
                     break;
                 }
             }
-            if (first != -1 ) break;
+            if (first!=-1) break;
         }
         return new int[]{first, second};
     }
 
+    // O(n) time!
+//    public static int[] twoSum(int[] numbers, int target) {
+//        Map<Integer, Integer> numToIndexMapping = new HashMap<>(numbers.length);
+//        for(int i = 0; i < numbers.length; i++) {
+//            if(numToIndexMapping.containsKey(target - numbers[i])) {
+//                return new int[] { i, numToIndexMapping.get(target - numbers[i]) };
+//            } else {
+//                numToIndexMapping.put(numbers[i], i);
+//            }
+//        }
+//        return new int[0];
+//    }
+
     static Stream<Arguments> basicTests() {
         return Stream.of(
-                arguments(new int[]{1,2,3},          4,     new int[]{0,2}),
-                arguments(new int[]{1234,5678,9012}, 14690, new int[]{1,2}),
-                arguments(new int[]{2,2,3},          4,     new int[]{0,1}),
-                arguments(new int[]{2,3,1},          4,     new int[]{1,2})
+                arguments(new int[]{1, 2, 3}, 4, new int[]{0, 2}),
+                arguments(new int[]{1234, 5678, 9012}, 14690, new int[]{1, 2}),
+                arguments(new int[]{2, 2, 3}, 4, new int[]{0, 1}),
+                arguments(new int[]{2, 3, 1}, 4, new int[]{1, 2})
         );
     }
-    @ParameterizedTest(name="numbers: {0}, target: {1}, expected: {2}")
+
+    @ParameterizedTest(name = "numbers: {0}, target: {1}, expected: {2}")
     @MethodSource
     @DisplayName("Basic tests")
     void basicTests(int[] numbers, int target, int[] expected) {
